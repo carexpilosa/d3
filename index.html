@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #chart div {
+      text-align: right
+    }
+  </style>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script>
+    function init() {
+      //letters:
+      d3.selectAll("p").style("color", "red");
+      d3.selectAll("p")
+        .data([4, 8, 15, 16, 23, 42])
+        .style("font-size", function(d) {
+          return d + "px";
+        });
+
+        //chart:
+        d3.select("#chart")
+          .selectAll("div")
+          .data([30, 86, 168, 281, 303, 365])
+            .enter()
+            .append("div")
+            .style("height", function() { return 40 + "px" })
+            .style("width", function(d) { return d + "px"; })
+            .style("font-size", function(d) { return (d/10 + 5) + "px"; })
+            .style("background-color", function(g) { return 'red'; })
+            .text(function(d) { return d; });
+    }
+
+    //numbers
+    function f1() {
+      var p = d3.select("body")
+        .selectAll("p")
+        .data([4, 8, 15, 16, 23, 42])
+          .text(function(d) { return d; });
+    }
+
+    //Circle size
+    function f2() {
+      d3.selectAll("circle").transition()
+        .duration(750)
+        .attr("r", function() {
+          return 200;
+        })
+        .attr("fill", function() {
+          return"yellow";
+        });
+    }
+
+    function f3() {
+      d3.selectAll("circle").transition()
+        .duration(750)
+        .attr("r", function() {
+          return 40;
+        })
+        .attr("fill", function() {
+          return "red";
+        });
+    }
+
+    function f4() {
+      d3.select("body").transition()
+      .duration(3000)
+      .style("background-color", "black");
+    }
+  </script>
+</head>
+<body onload="init()">
+  <p>p</p>
+  <p>p</p>
+  <p>p</p>
+  <p>p</p>
+  <p>p</p>
+  <p>p</p>
+  <p>p</p>
+  <div id="chart">chart</div>
+  <div style="position:absolute; width: 400px; height: 400px; left: 200px; top: 100px">
+    <svg height="400" width="400">
+      <circle cx="200" cy="200" r="40" stroke="black" stroke-width="3" fill="red" />
+    </svg>
+  </div>
+  <a href="javascript:f1()">f1</a><br/>
+  <a href="javascript:f2()">f2</a><br/>
+  <a href="javascript:f3()">f3</a><br/>
+  <a href="javascript:f4()">f4</a><br/>
+
+</body>
+</html>
