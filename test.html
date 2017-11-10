@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SVG Beispiel</title>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script>
+      const circle = () => {
+        d3.select('svg#v1').append('circle')
+          .attr('cx','380')
+          .attr('cy','60')
+          .attr('r','55')
+          .style('stroke','red')
+          .style('fill','lightsteelblue')
+          .style('fill-opacity',0.5);
+      }
+
+      const rect = () => {
+        d3.select('svg#v1').append('rect')
+          .attr('x','0')
+          .attr('y','0')
+          .attr('height','120')
+          .attr('width','160')
+          .attr('fill','#ff6600');
+      }
+
+      const ellipse = () => {
+        d3.select('svg#v1').append('ellipse')
+          .attr('cx','240')
+          .attr('cy','60')
+          .attr('rx','120')
+          .attr('ry','40')
+          .style('fill','green');
+      }
+
+
+    </script>
+  </head>
+  <body>
+    <svg id="v1" viewBox="0 0 450 120" style="width:600px; max-width:100%;">
+
+    </svg>
+    <br />
+    <a href="javascript:circle()">circle</a>
+    <a href="javascript:ellipse()">ellipse</a>
+    <a href="javascript:rect()">rect</a>
+  </body>
+</html>
+

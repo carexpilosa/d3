@@ -14,8 +14,8 @@
   <script>
     function init() {
       //letters:
-      d3.selectAll("p").style("color", "red");
-      d3.selectAll("p")
+      d3.selectAll("p.fs").style("color", "red");
+      d3.selectAll("p.fs")
         .data([4, 8, 15, 16, 23, 42])
         .style("font-size", function(d) {
           return d + "px";
@@ -37,7 +37,7 @@
     //numbers
     function f1() {
       var p = d3.select("body")
-        .selectAll("p")
+        .selectAll("p.fs")
         .data([4, 8, 15, 16, 23, 42])
           .text(function(d) { return d; });
     }
@@ -70,16 +70,22 @@
       .duration(3000)
       .style("background-color", "black");
     }
+
+    function f5() {
+      d3.select("body").transition()
+      .duration(3000)
+      .style("background-color", "white");
+    }
   </script>
 </head>
 <body onload="init()">
-  <p>p</p>
-  <p>p</p>
-  <p>p</p>
-  <p>p</p>
-  <p>p</p>
-  <p>p</p>
-  <p>p</p>
+  <p class="fs">p</p>
+  <p class="fs">p</p>
+  <p class="fs">p</p>
+  <p class="fs">p</p>
+  <p class="fs">p</p>
+  <p class="fs">p</p>
+  
   <div id="chart">chart</div>
   <div style="position:absolute; width: 400px; height: 400px; left: 200px; top: 100px">
     <svg height="400" width="400">
@@ -90,6 +96,7 @@
   <a href="javascript:f2()">f2</a><br/>
   <a href="javascript:f3()">f3</a><br/>
   <a href="javascript:f4()">f4</a><br/>
+  <a href="javascript:f5()">f5</a><br/>
 
 </body>
 </html>

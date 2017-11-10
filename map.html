@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Map Beispiel</title>
+    <script>
+      function init() {
+        let myMap = new Map([
+          ['eins', {obj:'bla'}]
+        ]);
+        console.log(myMap);
+        for(let [key, val] of myMap) {
+          document.getElementById('out').innerHTML = `${key}, ${val}`;
+          //document.getElementById('out').innerHTML = 'XXXX';
+        }
+      }
+    </script>
+  </head>
+  <body onload="init()">
+    <div id="out"></div>
+  </body>
+</html>
+
