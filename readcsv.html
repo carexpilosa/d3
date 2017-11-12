@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="http://d3js.org/d3.v4.min.js"></script>
+  <script>
+    function init() {
+      d3.csv("/cities.csv", function(data) {
+        data.forEach(function(d) {
+          console.log(d);
+          //d.population = +d.population;
+          //d["land area"] = +d["land area"];
+          //console.log(d.population, d["land area"]);
+        });
+        //console.log(data[0]);
+      });
+    }
+  </script>
+</head>
+<body onload="init()">
+  
+</body>
+</html>
