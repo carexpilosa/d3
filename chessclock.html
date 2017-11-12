@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html lang="de">
+<head>
+<title>Chess Clock</title>
+<meta charset="utf-8">
+<style type="text/css">
+.timeWhite, .timeBlack {
+  font-size: 40px;
+  border: 2px solid black;
+}
+
+#spacer {
+  border: 2px solid black;
+}
+
+#pause {
+  color: red
+}
+
+</style>
+<script src="./chessclock.js"></script>
+</head>
+<body onLoad="init()">
+
+<span id="whiteTimeHrs" class="time timeWhite">00</span>
+<span id="whiteTimeMin" class="time timeWhite">05</span>
+<span id="whiteTimeSec" class="time timeWhite">00</span>
+<span id="spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span id="blackTimeHrs" class="time timeBlack">00</span>
+<span id="blackTimeMin" class="time timeBlack">05</span>
+<span id="blackTimeSec" class="time timeBlack">00</span>
+<table>
+  <tr>
+    <td width="90" id="left">LEFT<td>
+    <td width="90" id="pause">PAUSE<td>
+    <td width="90" id="right">RIGHT<td>    
+  </tr>
+</table>
+
+<!--table>
+  <tr>
+    <td height="1200"></td>
+  </tr>
+</table//-->
+</body>
+</html>
