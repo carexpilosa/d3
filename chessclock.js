@@ -37,8 +37,8 @@ class ChessClock {
     this._isRunning = false;
     this._leftIsRunning = false;
     this._rightIsRunning = false;
-    this._timeLeft = undefined;
-    this._timeRight = undefined;
+    this._timeLeft = 0;
+    this._timeRight = 0;
     this._lastStarted = undefined;
   }
   get isRunning() {
@@ -63,13 +63,15 @@ class ChessClock {
   start(divId) {
     document.getElementById(divId).style.color = 'green';
     if (divId === 'left') {
-      this.leftIsRunning = true;
       this._lastStarted = new Date().getTime();
+      this.leftIsRunning = true;
+      cancelAnimationFrame(frame);
       this.ohrwerk('left');
       this.stop('right');
     } else if (divId === 'right') {
-      this.rightIsRunning = true;
       this._lastStarted = new Date().getTime();
+      this.rightIsRunning = true;
+      cancelAnimationFrame(frame);
       this.ohrwerk('right');
       this.stop('left');
     }
@@ -78,8 +80,12 @@ class ChessClock {
     document.getElementById(divId).style.color = 'red';
     if (divId === 'left') {
       this.leftIsRunning = false;
+      let now = new Date().getTime();
+      this._timeLeft = this._timeLeft + now - this._lastStarted;
     } else if(divId === 'right') {
       this.rightIsRunning = false;
+      let now = new Date().getTime();
+      this._timeRight = this._timeRight + now - this._lastStarted;
     }
     
   }
@@ -92,13 +98,11 @@ class ChessClock {
     this.restart('right');
     this.stop('all');
     clock.resetVars();
+    cancelAnimationFrame(frame);
   }
 
   ohrwerk(which) {
-    cancelAnimationFrame(frame);
-    console.log(new Date().getTime() - clock._lastStarted);
-    console.log(which);
-    frame = requestAnimationFrame(function() {
+     frame = requestAnimationFrame(function() {
       clock.ohrwerk(which);
     });
   }
