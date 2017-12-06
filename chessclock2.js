@@ -1,11 +1,34 @@
 "use strict";
-let startTime;
+let startZeit,
+    stopZeit,
+    gesamtZeitWeiß = 0,
+    gesamtZeitSchwarz = 0,
+    letzterCheckZeit,
+    seiteAmZug = 'w'; // s/w/-
 
 function init() {
-  startTime = new Date().getTime();
+  startZeit = letzterCheckZeit = new Date().getTime();
   setInterval(function() {
-    let ms = 40000 - new Date().getTime() + startTime;
-    let s = Math.floor(ms/1000);
-    document.getElementById('blackTimeSec').innerHTML = s;
-  }, 33)
+    if (seiteAmZug === 'w') {
+      gesamtZeitWeiß += zeitSeitLetztemCheck();
+    } else if (seiteAmZug === 's') {
+      gesamtZeitSchwarz += zeitSeitLetztemCheck();
+    }
+    letzterCheckZeit = new Date().getTime();
+    document.getElementById('whiteTime').innerHTML = Math.floor(gesamtZeitWeiß/1000);
+    document.getElementById('blackTime').innerHTML = Math.floor(gesamtZeitSchwarz/1000);
+  }, 50);
+}
+
+function zeitSeitLetztemCheck() {
+  return new Date().getTime() - letzterCheckZeit;
+}
+
+function wexel() {
+  letzterCheckZeit = new Date().getTime();
+  if (seiteAmZug === 'w') {
+    seiteAmZug = 's';
+  } else if (seiteAmZug === 's') {
+    seiteAmZug = 'w';
+  }
 }
